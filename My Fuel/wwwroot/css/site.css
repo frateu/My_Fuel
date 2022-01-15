@@ -1,18 +1,79 @@
 html {
   font-size: 14px;
+  background: #cddad8;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+        background: #cddad8;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    background: #cddad8;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background: #cddad8;    
+}
+
+.navbar-header {
+    float: left;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+    background: #919f89;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.navbar-brand {
+    float: none;
+    font-family: Cardo;
+    font-size: 24px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 26.4px;
+}
+
+.main-options {
+    width: 50%;
+}
+
+.btn-cadastrar {
+    width: auto;
+    text-align: left;
+    font-family: Cardo;
+}
+
+.btn-visualizar {
+    width: auto;
+    text-align: left;
+    font-family: Cardo;
+}
+
+.btn-editar {
+    width: auto;
+    text-align: left;
+    font-family: Cardo;
+}
+
+.btn-color {
+    color: black;
+    background: #98a7ac;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+    .btn-color:hover {
+        color: white;
+        background: #4a6d79;
+    }
+
+.img-pump {
+    width: auto;
+    float: right;
 }
