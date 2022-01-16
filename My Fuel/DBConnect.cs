@@ -9,7 +9,7 @@ namespace My_Fuel
         SqlDataReader dr;
         private void connectionString()
         {
-            con.ConnectionString = "data source=FRATEU; database=MyFuel; integrated security = SSPI";
+            con.ConnectionString = "data source=Frateu;Initial Catalog= MyFuel;User Id = visitante; Password = forasteiro;";
         }
         public SqlDataReader commandTxt(string command)
         {
