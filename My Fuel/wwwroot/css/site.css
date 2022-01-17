@@ -82,9 +82,12 @@ body {
     display: inline-flex;
 }
 
+.infos-abastecimento {
+    display: inline-flex;
+}
+
 .left-options {
-    padding: 50px 0px 0px 200px;
-    width: 100%;
+    padding: 50px 0px 0px 300px;
     font-family: Cardo;
     font-size: 20px;
     font-style: normal;
@@ -94,7 +97,7 @@ body {
 }
 
 .right-options {
-    padding: 50px 0px 0px 200px;
+    padding: 50px 0px 0px 300px;
     font-family: Cardo;
     font-size: 20px;
     font-style: normal;
