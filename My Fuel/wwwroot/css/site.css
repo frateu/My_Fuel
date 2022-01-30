@@ -86,26 +86,6 @@ body {
     display: inline-flex;
 }
 
-.left-options {
-    padding: 50px 0px 0px 300px;
-    font-family: Cardo;
-    font-size: 20px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 500;
-    line-height: 26.4px;
-}
-
-.right-options {
-    padding: 50px 0px 0px 300px;
-    font-family: Cardo;
-    font-size: 20px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 500;
-    line-height: 26.4px;
-}
-
 #kmRodado {
     background-color: #98a7ac;
     color: white;
@@ -119,7 +99,7 @@ body {
     color: white;
     border: 1px ridge gray;
     width: 130px;
-    margin-left: 34px;
+    margin-left: 35px;
 }
 
 #litros {
@@ -127,7 +107,7 @@ body {
     color: white;
     border: 1px ridge gray;
     width: 130px;
-    margin-left: 69px;
+    margin-left: 60px;
 }
 
 #valor {
@@ -135,7 +115,7 @@ body {
     color: white;
     border: 1px ridge gray;
     width: 130px;
-    margin-left: 70px;
+    margin-left: 60px;
 }
 
 .btn-submit {

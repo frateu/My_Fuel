@@ -3,8 +3,8 @@
 }
 
 <form action="Cadastrar/Abastecimento" method="post" id="cadastrar-abastecimento">
-    <div class="cadastro-menu">
-        <div class="left-options">
+        <div class="row text-center">
+        <div class="col text-center">
             <label for="kmRodado">KM Rodado:</label>
             <input type="text" id="kmRodado" name="KmRodado" required><br><br>
 
@@ -17,14 +17,14 @@
             <label for="valor">Valor:</label>
             <input type="text" id="valor" name="Valor" required><br><br>
         </div>
-        <div class="right-options">
+        <div class="col text-center">
            <label for="dataAbastecimento">Data:</label>
            <input type="date" id="dataAbastecimento" name="Data" min="2000-01-01" max="2030-01-01" required><br><br><br><br>
 
            <label for="alcool">Álcool:</label>
            <input type="checkbox" id="alcool" name="Alcool" value="true"><br><br>
         </div>
-    </div>
+        </div>
 </form>
 
 <div class="btn-submit">
