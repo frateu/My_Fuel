@@ -1,3 +1,43 @@
-﻿@{
+﻿@using System.Collections
+@{
     ViewData["Title"] = "Visualizar Abastecimentos";
 }
+<form action="Visualizar/Abastecimentos" method="get" id="visualizar-abastecimentos">
+    <div class="row">
+        <div class="col">
+          <label for="mes">Mês</label>
+          <select id="mes" name="Mes" class="form-control">
+            <option selected>Todos</option>
+            <option value="1">Janeiro</option>
+            <option value="2">Fevereiro</option>
+            <option value="3">Março</option>
+            <option value="4">Abril</option>
+            <option value="5">Maio</option>
+            <option value="6">Junho</option>
+            <option value="7">Julho</option>
+            <option value="8">Agosto</option>
+            <option value="9">Setembro</option>
+            <option value="10">Outubro</option>
+            <option value="11">Novembro</option>
+            <option value="12">Dezembro</option>
+          </select>
+        </div>
+
+        <div class="col">
+          <label for="ano">Ano</label>
+          <select id="ano" name="Ano" class="form-control">
+            <option selected>Todos</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+          </select>
+        </div>
+
+        <button style="font-size:18px; height: 50px; width: 150px;" 
+        type="submit" class="btn btn-color m-4" 
+        form="visualizar-abastecimentos">Pesquisar</button>
+    </div>
+</form>

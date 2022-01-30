@@ -1,0 +1,64 @@
+﻿@using System.Collections
+@using System.Text.Json
+@{
+    ViewData["Title"] = "Visualizar ";
+}
+
+<div class="btn-visualizar">
+        <button style="font-size:18px; height: 40px; width: 130px;" 
+        type="button" class="btn btn-color m-4" 
+        onclick="location.href='@Url.Action("Index", "Visualizar")'">Voltar</button>
+</div>
+
+<div class="panel panel-default">
+    <!-- Media | Litragem Total | Gasto Total -->
+    <div class="panel-heading" id="dadosGerados">
+        <div class="card text-center">
+            <div class="card-header">
+                <h2>Valores Totais para </h2>
+                <h3>Mês: @ViewData["mes"] | Ano: @ViewData["ano"]</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm">
+                        Média Total: @ViewData["mediaTotal"] KM/L
+                    </div>
+                    <div class="col-sm">
+                        Valor Total: R$@ViewData["valorTotal"]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+@foreach (var abast in ViewBag.abastecimentos)
+{
+    <!-- Todos os Abastecimentos -->
+    <div class="panel-body" id="abastecimentos">
+        <div class="card text-center">
+            <div class="card-header">
+                <h5>Data: @abast[7] / @abast[8] / @abast[9]</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm">
+                        <p>Km Rodado: @abast[0] km</p>
+                        <p>Km Total: @abast[1] km</p>
+                        <p>Litros: @abast[2] L</p>
+                        <p>Valor: R$@abast[3]</p>
+                    </div>
+                    <div class="col-sm">
+                        @if (abast[4].Equals("0")) {
+                                <p>Combustivel: Gasolina</p>
+                            }else{
+                                <p>Combustivel: Álcool</p>
+                            }
+                        <p>Média: @abast[5] KM/L</p>
+                        <p>Valor Litro: R$@abast[6]/L</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+</div>

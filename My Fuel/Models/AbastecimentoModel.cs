@@ -10,5 +10,8 @@
         public Boolean Alcool { get; set; }
         public double Media { get; set; }
         public double ValorLitro { get; set; }
+        public int Dia { get; set; }
+        public int Mes { get; set; }
+        public int Ano { get; set; }
     }
 }
