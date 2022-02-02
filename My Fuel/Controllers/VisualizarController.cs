@@ -18,6 +18,8 @@ namespace My_Fuel.Controllers
         {
             double mediaCalculadaTotal = 0;
             double valorCalculadoTotal = 0;
+            double litroCalculadoTotal = 0;
+            double kmRodadoCalculadoTotal = 0;
             double contDias = 0;
 
             ViewBag.abastecimentos = ArrayAbastecimento(pesquisa);
@@ -28,13 +30,17 @@ namespace My_Fuel.Controllers
             {
                 mediaCalculadaTotal += Convert.ToDouble(abast[5]);
                 valorCalculadoTotal += Convert.ToDouble(abast[3]);
+                litroCalculadoTotal += Convert.ToDouble(abast[2]);
+                kmRodadoCalculadoTotal += Convert.ToDouble(abast[0]);
                 contDias++;
             }
 
             mediaCalculadaTotal = mediaCalculadaTotal / contDias;
 
-            ViewBag.mediaTotal = mediaCalculadaTotal;
-            ViewBag.valorTotal = valorCalculadoTotal;
+            ViewBag.mediaTotal = Math.Round(mediaCalculadaTotal, 2);
+            ViewBag.valorTotal = Math.Round(valorCalculadoTotal, 2);
+            ViewBag.litrosTotal = Math.Round(litroCalculadoTotal, 2);
+            ViewBag.kmRodadoTotal = Math.Round(kmRodadoCalculadoTotal, 2);
 
             return View();
         }
@@ -42,23 +48,23 @@ namespace My_Fuel.Controllers
         {
             if (pesquisa.Mes.Equals("Todos") && pesquisa.Ano.Equals("Todos"))
             {
-                sqlAbastecimento = db.commandTxt("SELECT * FROM Abastecimentos");
+                sqlAbastecimento = db.commandTxt("SELECT * FROM Abastecimentos ORDER BY ano, mes, dia");
             }
             else
             {
                 if (pesquisa.Mes.Equals("Todos"))
                 {
                     sqlAbastecimento = db.commandTxt("SELECT * FROM Abastecimentos WHERE " +
-                        "ano = " + Convert.ToInt32(pesquisa.Ano));
+                        "ano = " + Convert.ToInt32(pesquisa.Ano) + " ORDER BY ano, mes, dia");
                 }else if (pesquisa.Ano.Equals("Todos"))
                 {
                     sqlAbastecimento = db.commandTxt("SELECT * FROM Abastecimentos WHERE " +
-                        "mes = " + Convert.ToInt32(pesquisa.Mes));
+                        "mes = " + Convert.ToInt32(pesquisa.Mes) + " ORDER BY ano, mes, dia");
                 }
                 else
                 {
                     sqlAbastecimento = db.commandTxt("SELECT * FROM Abastecimentos WHERE " +
-                        "mes = " + Convert.ToInt32(pesquisa.Mes) + "AND ano = " + Convert.ToInt32(pesquisa.Ano));
+                        "mes = " + Convert.ToInt32(pesquisa.Mes) + "AND ano = " + Convert.ToInt32(pesquisa.Ano) + " ORDER BY ano, mes, dia");
                 }
             }
             ArrayList allAbastecimentos = new ArrayList();

@@ -2,8 +2,8 @@
     ViewData["Title"] = "Dados do Abastecimento";
 }
 
-<div class="infos-abastecimento">
-    <div class="left-options">
+<div class="row text-center">
+    <div class="col text-center">
         <p>Km Rodado: @ViewBag.KmRodado km</p>
         <p>Km Total: @ViewBag.KmTotal km</p>
         <p>Litros: @ViewBag.Litros L</p>
@@ -11,7 +11,7 @@
         <p>Data: @ViewBag.Data.ToString("dd/MM/yyyy")</p>
         <p>Combustível: @ViewBag.Alcool</p>
     </div>
-    <div class="right-options">
+    <div class="col text-center">
         <p>Média: @ViewBag.Media KM/L</p>
         <p>Preço do Combustivel: R$ @ViewBag.ValorLitro</p>
     </div>

@@ -11,7 +11,7 @@
 </div>
 
 <div class="panel panel-default">
-    <!-- Media | Litragem Total | Gasto Total -->
+    <!-- Media | Litragem Total | Gasto Total | KM Rodado Total-->
     <div class="panel-heading" id="dadosGerados">
         <div class="card text-center">
             <div class="card-header">
@@ -20,6 +20,12 @@
             </div>
             <div class="card-body">
                 <div class="row">
+                    <div class="col-sm">
+                        Km Total: @ViewData["kmRodadoTotal"] KM
+                    </div>
+                    <div class="col-sm">
+                        Litragem Total: @ViewData["litrosTotal"] L
+                    </div>
                     <div class="col-sm">
                         Média Total: @ViewData["mediaTotal"] KM/L
                     </div>

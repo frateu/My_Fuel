@@ -39,14 +39,14 @@ namespace My_Fuel.Controllers
                 ", " + abastecimento.Data.Day + ", " + abastecimento.Data.Month + ", " + abastecimento.Data.Year + ")");
 
             //Informações para a nova pagina
-            ViewBag.KmRodado = double.Parse(abastecimento.KmRodado, CultureInfo.InvariantCulture).ToString("0.##");
-            ViewBag.KmTotal = double.Parse(abastecimento.KmTotal, CultureInfo.InvariantCulture);
-            ViewBag.Litros = double.Parse(abastecimento.Litros, CultureInfo.InvariantCulture);
-            ViewBag.Valor = double.Parse(abastecimento.Valor, CultureInfo.InvariantCulture).ToString("0.##");
+            ViewBag.KmRodado = Math.Round(double.Parse(abastecimento.KmRodado, CultureInfo.InvariantCulture), 2);
+            ViewBag.KmTotal = Math.Round(double.Parse(abastecimento.KmTotal, CultureInfo.InvariantCulture), 2);
+            ViewBag.Litros = Math.Round(double.Parse(abastecimento.Litros, CultureInfo.InvariantCulture), 2);
+            ViewBag.Valor = Math.Round(double.Parse(abastecimento.Valor, CultureInfo.InvariantCulture), 2);
             ViewBag.Data = abastecimento.Data;
             ViewBag.Alcool = alcoolStr;
-            ViewBag.Media = abastecimento.Media.ToString("0.##");
-            ViewBag.ValorLitro = abastecimento.ValorLitro.ToString("0.##");
+            ViewBag.Media = Math.Round(abastecimento.Media, 2);
+            ViewBag.ValorLitro = Math.Round(abastecimento.ValorLitro, 2);
 
             return View();
         }
