@@ -2,6 +2,7 @@
 using My_Fuel.Models;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace My_Fuel.Controllers
 {
@@ -27,6 +28,9 @@ namespace My_Fuel.Controllers
                 alcoolStr = "Álcool";
             }
 
+            //Tratamento de erros de inserção
+            ErrorInsert(abastecimento);
+
             //Calculos da media e do valolr do litro
             abastecimento.Media = Math.Round(double.Parse(abastecimento.KmRodado, CultureInfo.InvariantCulture) / double.Parse(abastecimento.Litros, CultureInfo.InvariantCulture), 2);
             abastecimento.ValorLitro = Math.Round(double.Parse(abastecimento.Valor, CultureInfo.InvariantCulture) / double.Parse(abastecimento.Litros, CultureInfo.InvariantCulture), 2);
@@ -49,6 +53,18 @@ namespace My_Fuel.Controllers
             ViewBag.ValorLitro = Math.Round(abastecimento.ValorLitro, 2);
 
             return View();
+        }
+        private void ErrorInsert(AbastecimentoModel abastecimento)
+        {
+            if (Regex.Matches(abastecimento.KmTotal, @"[a-zA-Z]").Count > 0 || Regex.Matches(abastecimento.KmRodado, @"[a-zA-Z]").Count > 0 || Regex.Matches(abastecimento.Litros, @"[a-zA-Z]").Count > 0 || Regex.Matches(abastecimento.Valor, @"[a-zA-Z]").Count > 0)
+            {
+                RedirectToAction("Index");
+            }
+
+            abastecimento.KmTotal = abastecimento.KmTotal.Replace(",",".");
+            abastecimento.KmRodado = abastecimento.KmRodado.Replace(",", ".");
+            abastecimento.Litros = abastecimento.Litros.Replace(",", ".");
+            abastecimento.Valor = abastecimento.Valor.Replace(",", ".");
         }
     }
 }
