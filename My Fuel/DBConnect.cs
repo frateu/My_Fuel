@@ -13,6 +13,7 @@ namespace My_Fuel
         }
         public SqlDataReader commandTxt(string command)
         {
+            con.Close();
             connectionString();
             con.Open();
             com.Connection = con;

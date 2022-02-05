@@ -10,6 +10,8 @@ namespace My_Fuel.Controllers
     {
         DBConnect db = new DBConnect();
         SqlDataReader sqlAbastecimento;
+        SqlDataReader sqlModificar;
+        SqlDataReader sqlUltimoID;
         public IActionResult Index()
         {
             return View();
@@ -21,6 +23,7 @@ namespace My_Fuel.Controllers
             Thread.CurrentThread.CurrentCulture = nonInvariantCulture;
             int alcoolInt = 0;
             string alcoolStr = "Gasolina";
+            int ultimoID = 0;
 
             if (abastecimento.Alcool)
             {
@@ -35,17 +38,28 @@ namespace My_Fuel.Controllers
             abastecimento.Media = Math.Round(double.Parse(abastecimento.KmRodado, CultureInfo.InvariantCulture) / double.Parse(abastecimento.Litros, CultureInfo.InvariantCulture), 2);
             abastecimento.ValorLitro = Math.Round(double.Parse(abastecimento.Valor, CultureInfo.InvariantCulture) / double.Parse(abastecimento.Litros, CultureInfo.InvariantCulture), 2);
 
-            //SQL
+            //SQL pegar o ultimo ID
+            sqlUltimoID = db.commandTxt("SELECT * FROM Abastecimentos ORDER BY ano, mes, dia");
+            while (sqlUltimoID.Read())
+            {
+                ultimoID = Convert.ToInt32(sqlUltimoID["id"].ToString());
+            }
+
+            Console.WriteLine(ultimoID);
+
+            //SQL Inserir
             sqlAbastecimento = db.commandTxt("INSERT INTO Abastecimentos (km_rodado, km_total, litros, valor, alcool, media, valor_litro, dia, mes, ano) " +
-                "VALUES (" + double.Parse(abastecimento.KmRodado, CultureInfo.InvariantCulture) +
-                ", " + double.Parse(abastecimento.KmTotal, CultureInfo.InvariantCulture) + ", " + double.Parse(abastecimento.Litros, CultureInfo.InvariantCulture) +
-                ", " + double.Parse(abastecimento.Valor, CultureInfo.InvariantCulture) + ", " + alcoolInt + ", " + abastecimento.Media + ", " + abastecimento.ValorLitro +
+                "VALUES (" + 0 + ", " + double.Parse(abastecimento.KmTotal, CultureInfo.InvariantCulture) + ", " + double.Parse(abastecimento.Litros, CultureInfo.InvariantCulture) +
+                ", " + double.Parse(abastecimento.Valor, CultureInfo.InvariantCulture) + ", " + alcoolInt + ", " + 0 + ", " + abastecimento.ValorLitro +
                 ", " + abastecimento.Data.Day + ", " + abastecimento.Data.Month + ", " + abastecimento.Data.Year + ")");
+
+            //SQL atualizar a ultimo abastecimento
+            sqlModificar = db.commandTxt("UPDATE Abastecimentos SET km_rodado = " + double.Parse(abastecimento.KmRodado, CultureInfo.InvariantCulture) + ", media = " + abastecimento.Media + " WHERE id = " + ultimoID);
 
             //Informações para a nova pagina
             ViewBag.KmRodado = Math.Round(double.Parse(abastecimento.KmRodado, CultureInfo.InvariantCulture), 2);
             ViewBag.KmTotal = Math.Round(double.Parse(abastecimento.KmTotal, CultureInfo.InvariantCulture), 2);
-            ViewBag.Litros = Math.Round(double.Parse(abastecimento.Litros, CultureInfo.InvariantCulture), 2);
+            ViewBag.Litros = Math.Round(double.Parse(abastecimento.Litros, CultureInfo.InvariantCulture), 3);
             ViewBag.Valor = Math.Round(double.Parse(abastecimento.Valor, CultureInfo.InvariantCulture), 2);
             ViewBag.Data = abastecimento.Data;
             ViewBag.Alcool = alcoolStr;
